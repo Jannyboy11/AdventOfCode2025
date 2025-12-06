@@ -48,7 +48,7 @@ def stepRemovePaper(grid: Grid): (newGrid: Grid, removed: Int) = {
         (newGrid = newGrid, removed = pointsThatCanBeLifted.size)
 }
 
-def runRemovePaper(grid: Grid): Int =
+def solve2(grid: Grid): Int =
     Seq.unfold(grid) { g =>
         val (newGrid, removed) = stepRemovePaper(g)
         if removed == 0 then None else Some((removed, newGrid))
@@ -59,7 +59,7 @@ def runRemovePaper(grid: Grid): Int =
     val result1 = solve1(input)
     println(result1)
 
-    val result2 = runRemovePaper(input)
+    val result2 = solve2(input)
     println(result2)
 
 }
