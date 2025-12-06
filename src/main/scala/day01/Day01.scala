@@ -3,8 +3,7 @@ package day01
 import scala.io.Source
 
 val source = Source.fromResource("day01.in")
-val input: Seq[Rotation] = source.getLines()
-    .map {
+val input: Seq[Rotation] = source.getLines().map {
     case s"L${digits}" => Rotation.Left(digits.toInt)
     case s"R${digits}" => Rotation.Right(digits.toInt)
 }.toSeq
