@@ -27,7 +27,6 @@ def toColumns(input: (numberRows: Seq[Seq[Long]], operations: Seq[Operation])): 
         .transpose
         .map { case init :+ last => (init.asInstanceOf[Seq[Long]], last.asInstanceOf[Operation])}
 
-
 def columnResult(numbers: Seq[Long], operation: Operation) = operation match
     case Operation.Add => numbers.sum
     case Operation.Multiply => numbers.product
@@ -59,11 +58,10 @@ def determineColumn(input: Seq[String], startX: Int): (numbers: Seq[Long], opera
 def input2(input: Seq[String]): Seq[(numbers: Seq[Long], operation: Operation)] = {
     val resBuilder = Seq.newBuilder[(numbers: Seq[Long], operation: Operation)]
     var x = 0
-    while x < input(0).length do {
+    while x < input(0).length do
         val (numbers, operation, width) = determineColumn(input, x)
         resBuilder.addOne((numbers, operation))
         x += width + 1
-    }
     resBuilder.result()
 }
 
