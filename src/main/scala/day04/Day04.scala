@@ -32,7 +32,7 @@ def canBeLifted(grid: Grid, py:Int, px: Int): Boolean =
     grid(py, px) == Tile.Paper && countSurroundingPaper(grid, py, px) < 4
 
 def solve1(grid: Grid): Int =
-    (for y <- 0 until grid.height; x <- 0 until grid.width if canBeLifted(grid, y, x) yield ()).size
+    (0 until grid.height).flatMap(y => (0 until grid.width).map((y, _))).count(canBeLifted(grid, _, _))
 
 def stepRemovePaper(grid: Grid): (newGrid: Grid, removed: Int) = {
     val pointsThatCanBeLifted: Seq[(py: Int, px: Int)] = for
