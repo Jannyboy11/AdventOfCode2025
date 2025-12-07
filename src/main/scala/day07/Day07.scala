@@ -37,10 +37,7 @@ def solve1(input: Grid, startX: X): Int =
 
 def timelines(grid: Grid, x: X, y: Y, cache: mutable.Map[(X, Y), Long]): Long =
     cache.getOrElseUpdate((x, y), if y == grid.size then 1L
-    else if grid(y)(x) == Tile.Splitter then
-        val timelinesLeft = timelines(grid, x-1, y+1, cache)
-        val timelinesRight = timelines(grid, x+1, y+1, cache)
-        timelinesLeft + timelinesRight
+    else if grid(y)(x) == Tile.Splitter then timelines(grid, x-1, y+1, cache) + timelines(grid, x+1, y+1, cache)
     else timelines(grid, x, y+1, cache))
 
 def solve2(input: Grid, startX: X): Long =
