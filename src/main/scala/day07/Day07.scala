@@ -16,7 +16,7 @@ type Grid = IndexedSeq[IndexedSeq[Tile]]
 type X = Int
 type Y = Int
 
-def findStartX(grid: Grid): X = grid.head.indexWhere(_ == Tile.Start)
+def findStartX(grid: Grid): X = grid.head.indexOf(Tile.Start)
 
 def findSplitters(row: IndexedSeq[Tile]): Seq[X] =
     row.zipWithIndex.filter((tile, _) => tile == Tile.Splitter).map(_._2)
